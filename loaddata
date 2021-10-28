@@ -3,6 +3,6 @@ import numpy as np
 import os
 #loads data
 def dataload(filename):
-    data = pd.read_csv(filename, header=None)
+    df = pd.read_csv(filename, header=None)
         
     return df
