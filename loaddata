@@ -1,6 +1,6 @@
 import numpy as np
 #loads data
-def dataload(filename):
+def dataLoad(filename):
     data = np.loadtxt(filename)
     #creates a matrix of the same shape as the data
     boolv = np.ones(np.shape(data)[0],dtype=bool)
