@@ -1,49 +1,21 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct  6 18:06:56 2021
-
-@author: Dylan
-"""
-
 import numpy as np
-from displayMenu import displayMenu
-from dataLoad import dataLoad
-from dataPlot import dataPlot
-#define menu items
-menuItems =  np.array(["Load data", "Filter data","Display statistics",
-                       "Generate plots", "Quit"])
-#Gives an empty definition for filename
-filename = ""
-
-
-while True:
-    
-    choice = displayMenu(menuItems);
-    #Loads data using dataLoad function
-    if choice == 1:
-        filename  = input("Please enter the filename to load: ")
-        data = dataLoad(filename)
-
-    #Filters data using filterData function
-    elif  choice == 2: 
-        #Has data been loaded?
-        if filename == "":
-            print("Error: No file has been uploaded.")
-            
-    #Displays statistics using dataStatistics function
-    elif choice == 3:
-        #Has data been loaded?
-        if filename == "":
-            print("Error: No file has been uploaded.")
-            
-    #Generates plots using dataPlot function
-    elif choice == 4:
-        #Has data been loaded?
-        if filename == "":
-            print("Error: No file has been uploaded.")
-        else: 
-            dataPlot(data)
-    #Quit
-    elif choice == 5:
-        break
+from inputNumber import inputNumber
+def displayMenu(options):
+# DISPLAYMENU Displays a menu of options, ask the user to choose an item
+# and returns the number of the menu item chosen.
+#
+# Usage: choice = displayMenu(options)
+#
+# Input options Menu options (array of strings)
+# Output choice Chosen option (integer)
+#
+# Author: Mikkel N. Schmidt, mnsc@dtu.dk, 2015
+# Display menu options
+    for i in range(len(options)):
+        print("{:d}. {:s}".format(i+1, options[i]))
+        # Get a valid menu choice
+    choice = 0
+    while not(np.any(choice == np.arange(len(options))+1)):
+        choice = inputNumber("Please choose a menu item: ")
+        
+    return choice
